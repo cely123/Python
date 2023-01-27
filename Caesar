@@ -1,0 +1,75 @@
+"""1.  Prompt the user for a plain text string to be encrypted.
+2.  Prompt the user for a key size (Shift) and verify that it is an int type.
+3.  Set the mode of the program to either Encrypt or Decrypt. *Hint: use a list
+4.  Build a custom symbol base of Uppercase, Lowercase, Digits, and
+Punctuation. *Hint: import string
+5.  Encrypt the Plaintext string using the key size if mode is set to “Encrypt”.
+6.  Decrypt the Ciphertext using the key size if the mode is set to “Decrypt”.
+7.  Handle wrap around if the character is at the end of the custom symbol
+base.
+8.  Print the output, either Ciphertext or Plaintext.
+9.  Using your newly written program, decode the ciphers below, you will
+have to play around with the key size to solve the ciphers:
+a.  Uryyb
+b.  Jbeyq
+c.  ZRPP
+d.  Plore
+e.  rapbqr
+f. clguba
+g.  yrneavat
+h.  fgevatf
+i. svyrf
+j. yvfgf
+k.  qvpg
+l. vs
+m. ryvs
+n.  ryfr
+o.  vag
+p.  fge
+q.  sybng
+r. ghcyr"""
+
+import string
+
+
+#Text to be encrypted or decrypted
+message = input("Enter a message: ")
+
+#Key size.  Verify int type
+while True:
+    try:
+        distance = int(input("Enter the distance value for the key: "))
+        break
+    except ValueError as error:
+        print(error)
+        print("Distance must be an integer.  Please try again.")
+
+#Set the mode.  Encrypt or Decrypt
+mode = input("Enter the mode-[encrypt or decrypt]:")
+
+#Custom symbol base
+symbols = string.ascii_letters + string.digits + string.punctuation
+
+#Store the encrypted/decrypted form of the message
+code =""
+
+for symbol in message:
+    if symbol in symbols:
+         symbolIndex = symbols.find(symbol)
+         if mode == 'encrypt':
+             codeIndex = symbolIndex + distance
+         elif mode == 'decrypt':
+             codeIndex = symbolIndex - distance
+
+         # Handle wraparound, if needed:
+         if codeIndex >= len(symbols):
+            codeIndex = codeIndex - len(symbols)
+         elif codeIndex < 0:
+              codeIndex = codeIndex + len(symbols)
+
+         code += symbols[codeIndex]
+    else:
+         # Append the symbol without encrypting/decrypting:
+         code += symbol
+
+print(code)
