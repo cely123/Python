@@ -56,16 +56,16 @@ code =""
 for symbol in message:
     if symbol in symbols:
          symbolIndex = symbols.find(symbol)
-         if mode == 'encrypt':
+         if mode in ['encrypt','Encrypt','ENCRYPT','e','E']:
              codeIndex = symbolIndex + distance
-         elif mode == 'decrypt':
+         elif mode in ['decrypt','Decrypt','DECRYPT','d','D']:
              codeIndex = symbolIndex - distance
 
          # Handle wraparound, if needed:
          if codeIndex >= len(symbols):
-            codeIndex = codeIndex - len(symbols)
+            codeIndex -= len(symbols)
          elif codeIndex < 0:
-              codeIndex = codeIndex + len(symbols)
+              codeIndex += len(symbols)
 
          code += symbols[codeIndex]
     else:
