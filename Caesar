@@ -48,7 +48,7 @@ while True:
 mode = input("Enter the mode-[encrypt or decrypt]:")
 
 #Custom symbol base
-symbols = string.ascii_letters + string.digits + string.punctuation
+symbols = string.ascii_letters + string.digits + string.punctuation + " "
 
 #Store the encrypted/decrypted form of the message
 code =""
