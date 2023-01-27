@@ -1,0 +1,41 @@
+"""Magic 8 ball program using random to generate a random int between 1 and 9.  Prompt the user for a question.  Use
+the time module to wait 5 seconds.  Print 'searching for an answer'.  Print 'Please be patient'.  Use a for loop
+to print 10 '.' -waiting .5 seconds between each one bing printed.  Wait 1 second.  Use if-elif to determine
+the output."""
+
+import random
+import time
+
+number = random.randint(1,9)
+question = input("Ask the Magic 8 Ball a question: ")
+time.sleep(5)
+
+print("Searching for an answer.")
+print("Please be patient")
+
+for i in range(10):
+    time.sleep(.5)
+    print(".",end="")
+
+print()
+
+time.sleep(1)
+
+if number == 1:
+    print("Maybe")
+elif number == 2:
+    print("Yes - Definitely")
+elif number == 3:
+    print("Ask again later")
+elif number == 4:
+    print("Don't count on it")
+elif number == 5:
+    print("Reply hazy, try again")
+elif number == 6:
+    print("Are you crazy?")
+elif number == 7:
+    print("No way")
+elif number == 8:
+    print("Yes")
+elif number == 9:
+    print("No")
