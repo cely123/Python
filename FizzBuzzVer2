@@ -1,0 +1,71 @@
+"""Loop and Selection Coding Challenge 
+1. Asks the user for two numbers (lower and upper). These two numbers will 
+create a 
+range for our project. 
+2. The first number will be the lower limit of the range while the second 
+number will 
+be the upper limit of the range. 
+3. Loop through the range of numbers (omitting zero if chosen as lower limit) 
+and do 
+the following: 
+• If the number is evenly divisible by 30, print “Foo” 
+• If the number is evenly divisible by 5, print “Bar” 
+• If the number is evenly divisible by 3, print “Fizz” 
+• If the number is evenly divisible by 2, print “Buzz” 
+• If the number is evenly divisible by 3 and 2, print “FizzBuzz” 
+• If the number does not meet any of the criteria above, print “Bazz” 
+4. Finally print the following statements: 
+• “The total numbers evaluated was _________.” 
+• “There were ________ numbers that are divisible by 30.” 
+• “There were ________ numbers that are divisible by 5.” 
+• “There were ________ numbers that are divisible by 3.” 
+• “There were ________ numbers that are divisible by 2.” 
+• “There were ________ numbers that are divisible by both 3 and 2.” 
+• “There were ________ numbers that didn’t meet any of the requirements 
+above.”"""
+while True:
+    lower = int(input("Enter a number for the lower range: "))
+    upper = int(input("Enter a number for the upper range: "))
+    if lower > 0:
+        break
+    else:
+        print("Enter a number greater than zero")
+none = 0
+count_30 = 0
+count_5 = 0
+count_3 = 0
+count_2 = 0
+count_3_2 = 0
+for num in range(lower,upper + 1):
+    bazz = 0
+    if num % 30 == 0:
+        print("Foo")
+        count_30 += 1
+        bazz = 1
+    if num % 5 == 0:
+        print("Bar")
+        count_5 += 1
+        bazz = 1
+    if num % 3 == 0:
+        print("Fizz")
+        count_3 += 1
+        bazz = 1
+    if num % 2 == 0:
+        print("Buzz")
+        count_2 += 1
+        bazz = 1
+    if num % 3 == 0 and num % 2 == 0:
+        print("FizzBuzz")
+        count_3_2 += 1
+        bazz = 1
+    if bazz == 0:
+        print("Bazz")
+        none += 1
+print("The total numbers evaluated was",upper - lower +1)
+print("There were",count_30,"numbers that are divisible by 30.")
+print("There were",count_5,"numbers that are divisible by 5.")
+print("There were",count_3,"numbers that are divisible by 3.")
+print("There were",count_2,"numbers that are divisible by 2.")
+print("There were",count_3_2,"numbers that are divisible by both 3 and 2.")
+print("There were",none, "numbers that didn’t meet any of the requirements 
+above")
