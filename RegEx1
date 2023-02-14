@@ -1,18 +1,15 @@
 import re
 
 f = open("regexData1.txt" ,'r')
-
 content = f.read()
-
 pattern = re.compile(r'(?i)python')
 
 matches = pattern.finditer(content)
 
-
-
 count = 0
 for match in matches:
     count += 1
-    print(match)
+    match_str = match.group()
+    print(match_str)
 
-print(count)
+print("There are",count,"instances of the word python in this file.")
