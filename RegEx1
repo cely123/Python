@@ -4,7 +4,7 @@ f = open("regexData1.txt" ,'r')
 
 content = f.read()
 
-pattern = re.compile(r'(?i)\bpython\b')
+pattern = re.compile(r'(?i)python')
 
 matches = pattern.finditer(content)
 
