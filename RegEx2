@@ -1,0 +1,16 @@
+import re
+
+f = open("regexData2.txt" ,'r')
+content = f.read()
+pattern = re.compile(r'\d{3}.\d{2}.\d{4}')
+
+matches = pattern.finditer(content)
+
+count = 0
+for match in matches:
+    count += 1
+    # Replace spaces with dashes in the matched string
+    match_str = match.group().replace(" ", "-")
+    print(match_str)
+
+print("There are", count, "Social Security numbers in this file.")
