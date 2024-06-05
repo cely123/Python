@@ -1,0 +1,40 @@
+# Create a sample log file with some lines, including the IP address 192.168.1.50
+log_content = """
+2023-06-01 10:00:00 INFO Starting new session
+2023-06-01 10:01:00 WARN 192.168.1.50 failed login attempt
+2023-06-01 10:02:00 INFO User logged in from 192.168.1.50
+2023-06-01 10:03:00 ERROR 192.168.1.50 connection timeout
+2023-06-01 10:04:00 INFO Ending session
+"""
+
+# Write the sample content to a file
+with open('sample_log_file.log', 'w') as file:
+    file.write(log_content)
+
+print("Sample log file 'sample_log_file.log' created successfully.")
+
+# Function to find lines with a specific IP address in a log file
+def find_ip_in_log(file_path, ip_address):
+    try:
+        with open(file_path, 'r') as file:
+            lines = file.readlines()
+            matching_lines = [line for line in lines if ip_address in line]
+            
+        if matching_lines:
+            print(f"Lines containing the IP address {ip_address}:")
+            for line in matching_lines:
+                print(line.strip())
+        else:
+            print(f"No lines found containing the IP address {ip_address}.")
+            
+    except FileNotFoundError:
+        print(f"The file {file_path} does not exist.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Prompt the user to enter the IP address
+ip_address = input("Enter the IP address to search for: ")
+
+# Example usage
+file_path = 'sample_log_file.log'
+find_ip_in_log(file_path, ip_address)
